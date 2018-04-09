@@ -1,4 +1,21 @@
+<?php
+require_once('Controller/DBManager.php');
 
+$register = "";
+$dbManager = new DBManager();
+if(isset($_POST['firstName']) &&
+    isset($_POST['name']) &&
+    isset($_POST['day']) &&
+    isset($_POST['month']) &&
+    isset($_POST['year']) &&
+    isset($_POST['emailAddress']) &&
+    isset($_POST['password']) &&
+    isset($_POST['confirmPassword'])) {
+    $register = $dbManager->addRegistrationToBD($_POST['firstName'], $_POST['name'], $_POST['day'],
+        $_POST['month'], $_POST['year'], $_POST['emailAddress'], $_POST['password'],
+        $_POST['confirmPassword']);
+}
+?>
 
 
 
@@ -24,7 +41,7 @@
             <div class="row">
                 <div class="col-lg-1"></div>
                 <div class="form-control col-lg-10">
-                    <form method="post" action="validateRegistration.php">
+                    <form method="post" action="">
                         <div class="row">
                             <div class="col-lg-2"></div>
                             <div class="col-lg-8">
@@ -81,6 +98,10 @@
         <div class="col-lg-4"></div>
     </div>
 </div>
+
+<?php
+echo $register;
+?>
 
 </body>
 </html>
