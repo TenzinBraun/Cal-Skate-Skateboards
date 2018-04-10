@@ -48,5 +48,12 @@ class DBManager
         }
     }
 
+    public function findElementfromArticleWithIDCondition($element, $condition){
+        $selectElement = "SELECT $element FROM article WHERE id_article LIKE $condition";
+        $query = $this->connexionToDB()->query($selectElement);
+        return $query->fetchColumn();
+
+    }
+
 
 }
