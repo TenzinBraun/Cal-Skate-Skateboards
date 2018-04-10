@@ -61,4 +61,16 @@ class DBManager
         return $query;
     }
 
+
+    public function insertElementIntoTable($element, $table){
+        $insert = "INSERT INTO $table VALUES ('$element')";
+        $query = $this->connexionToDB()->query($insert);
+        $query->closeCursor();
+    }
+
+    public function insert2ElementsIntoTable($element1, $element2, $table){
+        $insert = "INSERT INTO $table VALUES ($element1,$element2)";
+        var_dump($query = $this->connexionToDB()->query($insert));
+        $query->closeCursor();
+    }
 }

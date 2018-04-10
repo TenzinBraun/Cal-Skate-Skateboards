@@ -1,8 +1,10 @@
 <?php
 
 require_once('Controller/DBManager.php');
+require_once('Controller/Panier.php');
 
 $database = new DBManager();
+$basket = new Panier(0);
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
@@ -75,7 +77,16 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
                         <h3>Ajouter au favoris</h3>
                     </div>
                     <div>
-                        <button type="button" class="btn">Ajouter au panier</button>
+                        <form method="post" action="">
+                            <button type="submit" class="btn" value="RUN" name="test">Ajouter au panier</button>
+                            <?php
+                                if(array_key_exists('test',$_POST)){
+                                    $basket->addArticleToBasket(1548486,$_GET['id']);
+                                    //var_dump($sql->closeCursor());
+                                    echo "That's Awesome !";
+                                }
+                            ?>
+                        </form>
                     </div>
                     <div>
                         <br/>
