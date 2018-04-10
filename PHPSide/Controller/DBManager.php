@@ -55,5 +55,10 @@ class DBManager
 
     }
 
+    public function findElementsfromArticle(){
+        $selectElements = "SELECT * FROM article";
+        $query = $this->connexionToDB()->query($selectElements);
+        return $query;
+    }
 
 }

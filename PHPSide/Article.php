@@ -56,7 +56,7 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
                     <h4>Nombre de commentaires : <?php echo $comments; ?></h4>
                     <h4>Disponibilité : <?php echo $disponibility; ?></h4>
                     <div class="dropdown-divider"></div>
-                    <div class="d-block"><?php echo $price; ?></div>
+                    <div class="d-block">Price : <?php echo $price; ?></div>
                     <form>
                         <label>
                             <input type="radio">S
@@ -91,7 +91,6 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
             <hr>
             <hr>
         </div>
-
 
         <!-- Article link with the one we clicked on -->
         <div class="col-lg-3">

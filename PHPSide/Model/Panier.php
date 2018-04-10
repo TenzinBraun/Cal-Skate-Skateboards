@@ -6,7 +6,7 @@
  * Time: 01:19
  */
 
-class Article
+class Panier
 {
 //Attributes
 
