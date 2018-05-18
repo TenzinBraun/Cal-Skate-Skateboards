@@ -81,7 +81,7 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
                             <button type="submit" class="btn" value="RUN" name="test">Ajouter au panier</button>
                             <?php
                                 if(array_key_exists('test',$_POST)){
-                                    $basket->addArticleToBasket(1548486,$_GET['id']);
+                                    $basket->addArticleToBasket(72085572,$_GET['id']);
                                     //var_dump($sql->closeCursor());
                                     echo "That's Awesome !";
                                 }
