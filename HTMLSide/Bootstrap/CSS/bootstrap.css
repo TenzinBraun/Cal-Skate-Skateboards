@@ -3293,7 +3293,7 @@ tbody.collapse.show {
   background-color: transparent;
 }
 
-.dropdown-menu.show  {
+.dropdown-menu.show {
   display: block;
 }
 
@@ -3850,7 +3850,7 @@ tbody.collapse.show {
   list-style: none;
 }
 
-.nav-link:hover {
+.nav-link {
   display: block;
   padding: 0.5rem 1rem;
 }
