@@ -3867,6 +3867,11 @@ tbody.collapse.show {
   border-bottom: 1px solid #dee2e6;
 }
 
+.nav-item:hover .dropdown-menu{
+  display:block;
+}
+
+
 .nav-tabs .nav-item {
   margin-bottom: -1px;
 }
