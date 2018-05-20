@@ -19,16 +19,21 @@ $elements = $db->findElementsfromArticle();
 <head>
     <meta charset="UTF-8">
     <title>Cal Skate Skateboards</title>
+    <link href="Bootstrap/CSS/bootstrap.css" rel="stylesheet">
+    <link href="Bootstrap/CSS/article.css" rel="stylesheet">
 </head>
 <body>
 
-<?php
-foreach($elements as $element) {
-
-    echo "<div id='articleDisplayed'><a href='Article.php?id={$element['id_article']}'><img src='{$element['path_article']}'
-    style='width: 100px;height: 100px;'></a></div>";
-}
-?>
-
+<div class="container-fluid">
+    <div class="row">
+        <?php
+        foreach($elements as $element) {
+            echo "<div id='placedArticle'>";
+            echo "<div id='articleDisplayed'><a href='Article.php?id={$element['id_article']}'><img id='imageArticle'src='{$element['path_article']}'></a></div>";
+            echo "</div>";
+        }
+        ?>
+    </div>
+</div>
 </body>
 </html>

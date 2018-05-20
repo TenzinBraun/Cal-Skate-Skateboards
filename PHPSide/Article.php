@@ -80,11 +80,16 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
                         <form method="post" action="">
                             <button type="submit" class="btn" value="RUN" name="test">Ajouter au panier</button>
                             <?php
-                                if(array_key_exists('test',$_POST)){
-                                    $basket->addArticleToBasket(72085572,$_GET['id']);
+                            try {
+                                if (array_key_exists('test', $_POST)) {
+                                    $basket->addArticleToBasket(72085572, $_GET['id']);
                                     //var_dump($sql->closeCursor());
                                     echo "That's Awesome !";
                                 }
+                            }
+                            catch(Exception $exception){
+                                echo "Article déja ajouté !";
+                            }
                             ?>
                         </form>
                     </div>
