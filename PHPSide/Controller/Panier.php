@@ -26,8 +26,12 @@ class Panier
     }
 
     public function addArticleToBasket($idAccount, $idArticle){
-        $this->db->insert2ElementsIntoTable($idAccount,$idArticle,"basket");
-        $this->db++;
+        if(!$this->db->verifyIfArticleIsAddedInBasket($idAccount, $idArticle, "basket")){
+            $this->db->insert2ElementsIntoTable($idAccount,$idArticle,"basket");
+            $this->db++;
+        }
+
     }
+
 
 }

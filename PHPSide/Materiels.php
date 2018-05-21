@@ -29,7 +29,8 @@ $elements = $db->findElementsfromArticle();
         <?php
         foreach($elements as $element) {
             echo "<div id='placedArticle'>";
-            echo "<div id='articleDisplayed'><a href='Article.php?id={$element['id_article']}'><img id='imageArticle'src='{$element['path_article']}'></a></div>";
+            echo "<div id='articleDisplayed'><a href='Article.php?id={$element['id_article']}'><img id='imageArticle' src='{$element['path_article']}'></a></div>";
+            echo "<div id='informationArticle'><h5>{$element['name_article']}</h5><br/><h6>{$element['price_article']} €</h6></div>";
             echo "</div>";
         }
         ?>

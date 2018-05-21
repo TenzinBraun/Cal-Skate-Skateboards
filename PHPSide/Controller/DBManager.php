@@ -73,4 +73,13 @@ class DBManager
         var_dump($query = $this->connexionToDB()->query($insert));
         $query->closeCursor();
     }
+    public function verifyIfArticleIsAddedInBasket($idAccount, $idArticle, $table){
+        $selectElementsFromTable = "SELECT COUNT(*) FROM ( SELECT DISTINCT `accountID`, `articleID` FROM $table WHERE `accountID`= '".$idAccount."' AND `articleID`=  '".$idArticle."') AS countID";
+        $result = $this->connexionToDB()->query($selectElementsFromTable)->fetchColumn();
+        if($result > 0){
+            echo $result;
+            return true;
+        }
+        else{return false;}
+    }
 }

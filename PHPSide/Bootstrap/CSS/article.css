@@ -2,6 +2,8 @@
     border: 2px solid #d1ecf1;
     margin-left: 15px;
     margin-top: 15px;
+    text-align: center;
+    font-size: 12px;
 }
 
 #imageArticle{
@@ -11,4 +13,9 @@
     margin-top: 5px;
     margin-bottom: 5px;
     margin-right: 5px;
+}
+
+#informationArticle{
+    font-size: 0;
+    margin: 5px;
 }
