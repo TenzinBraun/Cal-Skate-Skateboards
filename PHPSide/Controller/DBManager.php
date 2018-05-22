@@ -39,11 +39,10 @@ class DBManager
             $validatePassword = $password;
             $insert = "INSERT INTO `account`(`Id_account`, `account_first_name`, `account_name`, `account_birthday`, `account_email`, `account_password`) VALUES($autoID,'$fName','$name','$date','$email', '$validatePassword')";
             $query = $this->connexionToDB()->query($insert);
-            var_dump($this->connexionToDB());
             $query->closeCursor();
             return $message = "Félicitation ! Vous venez de vous inscrire sur Cal-Skate-Skateboards ! Appreciez vos moments chez nous ! ";
         }
-        else{
+    else{
             return $message = "Les deux mots de passes rentré ne sont pas équivalent";
         }
     }
@@ -70,7 +69,7 @@ class DBManager
 
     public function insert2ElementsIntoTable($element1, $element2, $table){
         $insert = "INSERT INTO $table VALUES ($element1,$element2)";
-        var_dump($query = $this->connexionToDB()->query($insert));
+        $query = $this->connexionToDB()->query($insert);
         $query->closeCursor();
     }
     public function verifyIfArticleIsAddedInBasket($idAccount, $idArticle, $table){
@@ -81,5 +80,21 @@ class DBManager
             return true;
         }
         else{return false;}
+    }
+
+    public function insertArticleIntoDataBase($name, $brandName , $price, $size, $path, $description){
+        $auto = $this->createAutoIDInDataBase();
+        $queryStatement = "INSERT INTO article VALUES ($auto++,'$name','$brandName',0,$price,'$size','$path','$description',1)";
+        $query = $this->connexionToDB()->query($queryStatement);
+        $query->closeCursor();
+    }
+
+    /**
+     * @return int
+     */
+    public function createAutoIDInDataBase(){
+        $queryStatement = "SELECT MAX(`id_article`) AS maxID FROM article";
+        return ($this->connexionToDB()->query($queryStatement)->fetchColumn());
+
     }
 }
