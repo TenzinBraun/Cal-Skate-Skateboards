@@ -84,7 +84,9 @@ class DBManager
 
     public function insertArticleIntoDataBase($name, $brandName , $price, $size, $path, $description){
         $auto = $this->createAutoIDInDataBase();
-        $queryStatement = "INSERT INTO article VALUES ($auto++,'$name','$brandName',0,$price,'$size','$path','$description',1)";
+        $auto++;
+        $queryStatement = "INSERT INTO article VALUES ($auto,'$name','$brandName',0,$price,'$size','$path','$description',1)";
+        echo $queryStatement;
         $query = $this->connexionToDB()->query($queryStatement);
         $query->closeCursor();
     }
