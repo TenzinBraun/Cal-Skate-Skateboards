@@ -1,3 +1,29 @@
+<?php
+
+require_once('../Controller/DBManager.php');
+require_once('../Controller/Panier.php');
+
+$database = new DBManager();
+$basket = new Panier(0);
+
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    echo "ok";
+}
+else{
+    $id = 0;
+}
+
+$path = $database->findElementfromArticleWithIDCondition("path_article",$id);
+$description = $database->findElementfromArticleWithIDCondition("description_article",$id);
+$price = $database->findElementfromArticleWithIDCondition("price_article",$id);
+$disponibility = $database->findElementfromArticleWithIDCondition("disponibility",$id);
+$brand = $database->findElementfromArticleWithIDCondition("brand_article",$id);
+$comments = $database->findElementfromArticleWithIDCondition("nbre_comment",$id);
+$name = $database->findElementfromArticleWithIDCondition("name_article",$id);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,11 +112,11 @@
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
+								<a href="product.php">Shop</a>
 							</li>
 
 							<li class="sale-noti">
-								<a href="product.html">Sale</a>
+								<a href="product.php">Sale</a>
 							</li>
 
 							<li>
@@ -353,11 +379,11 @@
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="product.html">Shop</a>
+						<a href="product.php">Shop</a>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="product.html">Sale</a>
+						<a href="product.php">Sale</a>
 					</li>
 
 					<li class="item-menu-mobile">
@@ -387,7 +413,7 @@
 			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 		</a>
 
-		<a href="product.html" class="s-text16">
+		<a href="product.php" class="s-text16">
 			Women
 			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 		</a>
@@ -412,7 +438,7 @@
 					<div class="slick3">
 						<div class="item-slick3" data-thumb="images/thumb-item-01.jpg">
 							<div class="wrap-pic-w">
-								<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+								<img src="<?php echo $path;?>" alt="IMG-PRODUCT">
 							</div>
 						</div>
 
@@ -433,15 +459,15 @@
 
 			<div class="w-size14 p-t-30 respon5">
 				<h4 class="product-detail-name m-text16 p-b-13">
-					Boxy T-Shirt with Roll Sleeve Detail
+					<?php echo $name; ?>
 				</h4>
 
 				<span class="m-text17">
-					$22
+					$<?php echo $price; ?>
 				</span>
 
 				<p class="s-text8 p-t-10">
-					Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+					<?php echo $description; ?>
 				</p>
 
 				<!--  -->
@@ -452,7 +478,6 @@
 						</div>
 
 						<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
-							<label>
 								<select class="selection-2" name="size">
 									<option>Choose an option</option>
 									<option>Size S</option>
@@ -460,7 +485,6 @@
 									<option>Size L</option>
 									<option>Size XL</option>
 								</select>
-							</label>
 						</div>
 					</div>
 
@@ -470,7 +494,6 @@
 						</div>
 
 						<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
-							<label>
 								<select class="selection-2" name="color">
 									<option>Choose an option</option>
 									<option>Gray</option>
@@ -478,7 +501,6 @@
 									<option>Black</option>
 									<option>Blue</option>
 								</select>
-							</label>
 						</div>
 					</div>
 
@@ -596,7 +618,7 @@
 							</div>
 
 							<div class="block2-txt p-t-20">
-								<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+								<a href="product-detail.php" class="block2-name dis-block s-text3 p-b-5">
 									Herschel supply co 25l
 								</a>
 
@@ -629,7 +651,7 @@
 							</div>
 
 							<div class="block2-txt p-t-20">
-								<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+								<a href="product-detail.php" class="block2-name dis-block s-text3 p-b-5">
 									Denim jacket blue
 								</a>
 
@@ -662,7 +684,7 @@
 							</div>
 
 							<div class="block2-txt p-t-20">
-								<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+								<a href="product-detail.php" class="block2-name dis-block s-text3 p-b-5">
 									Coach slim easton black
 								</a>
 
@@ -695,7 +717,7 @@
 							</div>
 
 							<div class="block2-txt p-t-20">
-								<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+								<a href="product-detail.php" class="block2-name dis-block s-text3 p-b-5">
 									Frayed denim shorts
 								</a>
 
@@ -732,7 +754,7 @@
 							</div>
 
 							<div class="block2-txt p-t-20">
-								<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+								<a href="product-detail.php" class="block2-name dis-block s-text3 p-b-5">
 									Herschel supply co 25l
 								</a>
 

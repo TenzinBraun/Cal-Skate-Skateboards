@@ -608,7 +608,7 @@ iframe {
   flex-wrap: wrap;
   width: 100%;
   height: 80px;
-  background-color: white;
+  background-color: #eeeefe;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -1056,7 +1056,7 @@ li.sale-noti > a {
 .side-menu .main-menu {margin-bottom: 0;}
 
 .item-menu-mobile {
-  background-color: #e65540;
+  background-color: #eeeefe;
 }
 
 .side-menu .main-menu > li > a {
@@ -1107,7 +1107,7 @@ li.sale-noti > a {
 
 .side-menu .sub-menu > li {
   padding-left: 12px;
-  padding-top: 
+  padding-top: inherit;
 }
 
 .side-menu .sub-menu a:hover {
