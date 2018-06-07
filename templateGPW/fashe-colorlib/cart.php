@@ -1,3 +1,14 @@
+<?php
+
+require_once('../Controller/DBManager.php');
+
+$db = new DBManager();
+
+$arrayBasketArticle = $db->findArticleFromBasket();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,7 +103,7 @@
 							</li>
 
 							<li>
-								<a href="cart.html">Features</a>
+								<a href="cart.php">Features</a>
 							</li>
 
 							<li>
@@ -181,7 +192,7 @@
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										View Cart
 									</a>
 								</div>
@@ -279,7 +290,7 @@
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										View Cart
 									</a>
 								</div>
@@ -357,7 +368,7 @@
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="cart.html">Features</a>
+						<a href="cart.php">Features</a>
 					</li>
 
 					<li class="item-menu-mobile">
@@ -377,7 +388,7 @@
 	</header>
 
 	<!-- Title Page -->
-	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/heading-pages-01.jpg);">
+	<section class="bg-title-page p-t-160 p-b-50 flex-col-c-m" style="background-image: url(Pictures/Challenge_slider.png);">
 		<h2 class="l-text2 t-center">
 			Cart
 		</h2>
@@ -398,53 +409,34 @@
 							<th class="column-5">Total</th>
 						</tr>
 
-						<tr class="table-row">
-							<td class="column-1">
-								<div class="cart-img-product b-rad-4 o-f-hidden">
-									<img src="images/item-10.jpg" alt="IMG-PRODUCT">
+
+                        <?php
+                            foreach($arrayBasketArticle as $article){
+                                echo "<tr class=\"table-row\">
+							<td class=\"column-1\">
+								<div class=\"cart-img-product b-rad-4 o-f-hidden\">
+									<img src=\"{$article['path_article']}\" alt=\"IMG-PRODUCT\">
 								</div>
 							</td>
-							<td class="column-2">Men Tshirt</td>
-							<td class="column-3">$36.00</td>
-							<td class="column-4">
-								<div class="flex-w bo5 of-hidden w-size17">
-									<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+							<td class=\"column-2\">{$article['name_article']}</td>
+							<td class=\"column-3\">{$article['price_article']}</td>
+							<td class=\"column-4\">
+								<div class=\"flex-w bo5 of-hidden w-size17\">
+									<button class=\"btn-num-product-down color1 flex-c-m size7 bg8 eff2\">
+										<i class=\"fs-12 fa fa-minus\" aria-hidden=\"true\"></i>
 									</button>
 
-									<input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="1">
+									<input class=\"size8 m-text18 t-center num-product\" type=\"number\" name=\"num-product1\" value=\"1\">
 
-									<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-									</button>
-								</div>
-							</td>
-							<td class="column-5">$36.00</td>
-						</tr>
-
-						<tr class="table-row">
-							<td class="column-1">
-								<div class="cart-img-product b-rad-4 o-f-hidden">
-									<img src="images/item-05.jpg" alt="IMG-PRODUCT">
-								</div>
-							</td>
-							<td class="column-2">Mug Adventure</td>
-							<td class="column-3">$16.00</td>
-							<td class="column-4">
-								<div class="flex-w bo5 of-hidden w-size17">
-									<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-									</button>
-
-									<input class="size8 m-text18 t-center num-product" type="number" name="num-product2" value="1">
-
-									<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+									<button class=\"btn-num-product-up color1 flex-c-m size7 bg8 eff2\">
+										<i class=\"fs-12 fa fa-plus\" aria-hidden=\"true\"></i>
 									</button>
 								</div>
 							</td>
-							<td class="column-5">$16.00</td>
-						</tr>
+							<td class=\"column-5\">{$article['price_article']}</td>
+						</tr>";
+                            }
+                        ?>
 					</table>
 				</div>
 			</div>
