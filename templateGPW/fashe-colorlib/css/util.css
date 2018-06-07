@@ -3039,7 +3039,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 .s-text4 {
 	font-family: Montserrat-Regular;
 	font-size: 15px;
-	color: white;
+	color: black;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 }
@@ -3178,7 +3178,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 */
 .m-text1 {
 	font-family: Montserrat-Regular;
-	font-size: 18px;
+	font-size: 69px;
 	color: white;
 	line-height: 1.5;
 	letter-spacing: 2px;
@@ -3239,7 +3239,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 .m-text9 {
 	font-family: Montserrat-Bold;
 	font-size: 30px;
-	color: white;
+	color: black;
 	line-height: 1.2;
 	letter-spacing: 2px;
 }
@@ -3379,7 +3379,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 .l-text1 {
 	font-family: Montserrat-Bold;
 	font-size: 50px;
-	color: white;
+	color: black;
 	line-height: 1.2;
 	text-transform: uppercase;
 	letter-spacing: 3px;
