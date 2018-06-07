@@ -60,6 +60,13 @@ class DBManager
         return $query;
     }
 
+    public function findArticleFromBasket(){
+        $selectElements = "SELECT ar.* FROM basket ba INNER JOIN article ar ON ba.articleID = ar.id_article";
+        $query = $this->connexionToDB()->query($selectElements);
+        return $query;
+
+    }
+
 
     public function insertElementIntoTable($element, $table){
         $insert = "INSERT INTO $table VALUES ('$element')";

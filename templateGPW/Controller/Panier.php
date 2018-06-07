@@ -30,6 +30,9 @@ class Panier
             $this->db->insert2ElementsIntoTable($idAccount,$idArticle,"basket");
             $this->db++;
         }
+    }
+
+    public function getArticleFromBasket(){
 
     }
 
