@@ -5,22 +5,22 @@ require_once('../Controller/Panier.php');
 
 $database = new DBManager();
 $basket = new Panier(0);
+session_start();
 
-if(isset($_GET['id'])){
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
     echo "ok";
-}
-else{
+} else {
     $id = 0;
 }
 
-$path = $database->findElementfromArticleWithIDCondition("path_article",$id);
-$description = $database->findElementfromArticleWithIDCondition("description_article",$id);
-$price = $database->findElementfromArticleWithIDCondition("price_article",$id);
-$disponibility = $database->findElementfromArticleWithIDCondition("disponibility",$id);
-$brand = $database->findElementfromArticleWithIDCondition("brand_article",$id);
-$comments = $database->findElementfromArticleWithIDCondition("nbre_comment",$id);
-$name = $database->findElementfromArticleWithIDCondition("name_article",$id);
+$path = $database->findElementfromArticleWithIDCondition("path_article", $id);
+$description = $database->findElementfromArticleWithIDCondition("description_article", $id);
+$price = $database->findElementfromArticleWithIDCondition("price_article", $id);
+$disponibility = $database->findElementfromArticleWithIDCondition("disponibility", $id);
+$brand = $database->findElementfromArticleWithIDCondition("brand_article", $id);
+$comments = $database->findElementfromArticleWithIDCondition("nbre_comment", $id);
+$name = $database->findElementfromArticleWithIDCondition("name_article", $id);
 ?>
 
 
@@ -78,7 +78,7 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
 
             <div class="topbar-child2">
 					<span class="topbar-email">
-						fashe@example.com
+						CalSkateSkateboard@gmail.com
 					</span>
 
                 <div class="topbar-language rs1-select2">
@@ -94,8 +94,9 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
 
         <div class="wrap_header">
             <!-- Logo -->
-            <a href="index.html" class="logo">
-                <img src="images/icons/logo.png" alt="IMG-LOGO">
+            <a href="index.php" class="logo">
+                <img src="images/skate/skate/Official_Logo.png" alt="IMG-LOGO">
+                CAL-SKATE-SKATEBOARD
             </a>
 
             <!-- Menu -->
@@ -103,36 +104,18 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
                 <nav class="menu">
                     <ul class="main_menu">
                         <li>
-                            <a href="index.html">Home</a>
-                            <ul class="sub_menu">
-                                <li><a href="index.html">Homepage V1</a></li>
-                                <li><a href="home-02.html">Homepage V2</a></li>
-                                <li><a href="home-03.html">Homepage V3</a></li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="product.php">Shop</a>
+                            <a href="index.php">Home</a>
                         </li>
 
                         <li class="sale-noti">
-                            <a href="product.php">Sale</a>
+                            <a href="product.php">Shop</a>
                         </li>
 
                         <li>
-                            <a href="cart.php">Features</a>
+                            <a href="cart.php">Cart</a>
                         </li>
-
                         <li>
-                            <a href="blog.html">Blog</a>
-                        </li>
-
-                        <li>
-                            <a href="about.html">About</a>
-                        </li>
-
-                        <li>
-                            <a href="contact.html">Contact</a>
+                            <a href="contact.php">Contact</a>
                         </li>
                     </ul>
                 </nav>
@@ -141,6 +124,10 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
             <!-- Header Icon -->
             <div class="header-icons">
                 <a href="connection.php" class="header-wrapicon1 dis-block">
+                    <?php if (isset($_SESSION['Name'])) {
+                        echo $_SESSION['Name'];
+                    }
+                    ?>
                     <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
                 </a>
 
@@ -230,7 +217,7 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
     <!-- Header Mobile -->
     <div class="wrap_header_mobile">
         <!-- Logo moblie -->
-        <a href="index.html" class="logo-mobile">
+        <a href="index.php" class="logo-mobile">
             <img src="images/icons/logo.png" alt="IMG-LOGO">
         </a>
 
@@ -332,7 +319,7 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
     </div>
 
     <!-- Menu Mobile -->
-    <div class="wrap-side-menu" >
+    <div class="wrap-side-menu">
         <nav class="side-menu">
             <ul class="main-menu">
                 <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
@@ -369,12 +356,7 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
                 </li>
 
                 <li class="item-menu-mobile">
-                    <a href="index.html">Home</a>
-                    <ul class="sub-menu">
-                        <li><a href="index.html">Homepage V1</a></li>
-                        <li><a href="home-02.html">Homepage V2</a></li>
-                        <li><a href="home-03.html">Homepage V3</a></li>
-                    </ul>
+                    <a href="index.php">Home</a>
                     <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
                 </li>
 
@@ -389,17 +371,8 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
                 <li class="item-menu-mobile">
                     <a href="cart.php">Features</a>
                 </li>
-
                 <li class="item-menu-mobile">
-                    <a href="blog.html">Blog</a>
-                </li>
-
-                <li class="item-menu-mobile">
-                    <a href="about.html">About</a>
-                </li>
-
-                <li class="item-menu-mobile">
-                    <a href="contact.html">Contact</a>
+                    <a href="contact.php">Contact</a>
                 </li>
             </ul>
         </nav>
@@ -408,7 +381,7 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
 
 <!-- breadcrumb -->
 <div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
-    <a href="index.html" class="s-text16">
+    <a href="index.php" class="s-text16">
         Home
         <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
     </a>
@@ -438,7 +411,7 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
                 <div class="slick3">
                     <div class="item-slick3" data-thumb="images/thumb-item-01.jpg">
                         <div class="wrap-pic-w">
-                            <img src="<?php echo $path;?>" alt="IMG-PRODUCT">
+                            <img src="<?php echo $path; ?>" alt="IMG-PRODUCT">
                         </div>
                     </div>
 
@@ -522,17 +495,18 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
                         <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
                             <form method="post" action="">
                                 <!-- Button -->
-                                <button type="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" name="test">Add to Cart</button>
+                                <button type="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4"
+                                        name="test">Add to Cart
+                                </button>
                                 <?php
-                                    try {
-                                        if (array_key_exists('test', $_POST)) {
-                                            $basket->addArticleToBasket(72085572, $_GET['id']);
-                                        }
+                                try {
+                                    if (array_key_exists('test', $_POST)) {
+                                        $basket->addArticleToBasket(72085572, $_GET['id']);
                                     }
-                                    catch(Exception $exception){
-                                        ;
-                                    }
-                                    ?>
+                                } catch (Exception $exception) {
+                                    ;
+                                }
+                                ?>
                             </form>
                         </div>
                     </div>
@@ -554,7 +528,8 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
 
                 <div class="dropdown-content dis-none p-t-15 p-b-23">
                     <p class="s-text8">
-                        Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat
+                        Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed
+                        velit. Proin gravida arcu nisl, a dignissim mauris placerat
                     </p>
                 </div>
             </div>
@@ -568,7 +543,8 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
 
                 <div class="dropdown-content dis-none p-t-15 p-b-23">
                     <p class="s-text8">
-                        Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat
+                        Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed
+                        velit. Proin gravida arcu nisl, a dignissim mauris placerat
                     </p>
                 </div>
             </div>
@@ -582,7 +558,8 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
 
                 <div class="dropdown-content dis-none p-t-15 p-b-23">
                     <p class="s-text8">
-                        Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat
+                        Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed
+                        velit. Proin gravida arcu nisl, a dignissim mauris placerat
                     </p>
                 </div>
             </div>
@@ -795,7 +772,7 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
                         </div>
 
                         <div class="block2-txt p-t-20">
-                            <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+                            <a href="product-detail.php" class="block2-name dis-block s-text3 p-b-5">
                                 Denim jacket blue
                             </a>
 
@@ -828,7 +805,7 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
                         </div>
 
                         <div class="block2-txt p-t-20">
-                            <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+                            <a href="product-detail.php" class="block2-name dis-block s-text3 p-b-5">
                                 Coach slim easton black
                             </a>
 
@@ -861,7 +838,7 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
                         </div>
 
                         <div class="block2-txt p-t-20">
-                            <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+                            <a href="product-detail.php" class="block2-name dis-block s-text3 p-b-5">
                                 Frayed denim shorts
                             </a>
 
@@ -892,7 +869,8 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
 
             <div>
                 <p class="s-text7 w-size27">
-                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on
+                    (+1) 96 716 6879
                 </p>
 
                 <div class="flex-m p-t-30">
@@ -1045,11 +1023,12 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
         </a>
 
         <div class="t-center s-text8 p-t-20">
-            Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            Copyright © 2019 All rights reserved. | This template is made with <i class="fa fa-heart-o"
+                                                                                  aria-hidden="true"></i> by <a
+                    href="https://colorlib.com" target="_blank">Colorlib</a>
         </div>
     </div>
 </footer>
-
 
 
 <!-- Back to top -->
@@ -1062,7 +1041,6 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
 <!-- Container Selection -->
 <div id="dropDownSelect1"></div>
 <div id="dropDownSelect2"></div>
-
 
 
 <!--===============================================================================================-->
@@ -1091,23 +1069,23 @@ $name = $database->findElementfromArticleWithIDCondition("name_article",$id);
 <!--===============================================================================================-->
 <script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
 <script type="text/javascript">
-    $('.block2-btn-addcart').each(function(){
+    $('.block2-btn-addcart').each(function () {
         var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-        $(this).on('click', function(){
+        $(this).on('click', function () {
             swal(nameProduct, "is added to cart !", "success");
         });
     });
 
-    $('.block2-btn-addwishlist').each(function(){
+    $('.block2-btn-addwishlist').each(function () {
         var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-        $(this).on('click', function(){
+        $(this).on('click', function () {
             swal(nameProduct, "is added to wishlist !", "success");
         });
     });
 
-    $('.btn-addcart-product-detail').each(function(){
+    $('.btn-addcart-product-detail').each(function () {
         var nameProduct = $('.product-detail-name').html();
-        $(this).on('click', function(){
+        $(this).on('click', function () {
             swal(nameProduct, "is added to wishlist !", "success");
         });
     });

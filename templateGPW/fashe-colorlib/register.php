@@ -14,6 +14,7 @@ if(isset($_POST['firstName']) &&
     $register = $dbManager->addRegistrationToBD($_POST['firstName'], $_POST['name'], $_POST['day'],
         $_POST['month'], $_POST['year'], $_POST['emailAddress'], $_POST['password'],
         $_POST['confirmPassword']);
+    echo "ok";
 }
 ?>
 
@@ -70,7 +71,7 @@ if(isset($_POST['firstName']) &&
 
     <div class="topbar-child2">
 					<span class="topbar-email">
-						fashe@example.com
+						CalSkateSkateboard@gmail.com
 					</span>
 
         <div class="topbar-language rs1-select2">
@@ -83,45 +84,28 @@ if(isset($_POST['firstName']) &&
 </div>
 <div class="wrap_header">
     <!-- Logo -->
-    <a href="index.html" class="logo">
-        <img src="images/icons/logo.png" alt="IMG-LOGO">
+    <a href="index.php" class="logo">
+        <img src="images/skate/skate/Official_Logo.png" alt="IMG-LOGO">
+        CAL-SKATE-SKATEBOARD
     </a>
 
     <!-- Menu -->
     <div class="wrap_menu">
         <nav class="menu">
             <ul class="main_menu">
-                <li>
-                    <a href="index.html">Home</a>
-                    <ul class="sub_menu">
-                        <li><a href="index.html">Homepage V1</a></li>
-                        <li><a href="home-02.html">Homepage V2</a></li>
-                        <li><a href="home-03.html">Homepage V3</a></li>
-                    </ul>
+                <li class="sale-noti">
+                    <a href="index.php">Home</a>
                 </li>
 
                 <li>
                     <a href="product.php">Shop</a>
                 </li>
 
-                <li class="sale-noti">
-                    <a href="product.php">Sale</a>
-                </li>
-
                 <li>
-                    <a href="cart.html">Features</a>
+                    <a href="cart.php">Cart</a>
                 </li>
-
                 <li>
-                    <a href="blog.html">Blog</a>
-                </li>
-
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-
-                <li>
-                    <a href="contact.html">Contact</a>
+                    <a href="contact.php">Contact</a>
                 </li>
             </ul>
         </nav>
@@ -219,7 +203,7 @@ if(isset($_POST['firstName']) &&
     <div class="row">
         <div class="col-md-3 p-b-30"></div>
         <div class="col-md-6 p-b-30">
-            <div class="leave-comment" action="" method="post">
+            <form class="leave-comment" action="" method="post">
                 <h4 class="m-text26 p-b-36 p-t-15">
                     Create your account now
                 </h4>
@@ -255,7 +239,6 @@ if(isset($_POST['firstName']) &&
                 <div class="bo4 of-hidden size15 m-b-20">
                     <input class="sizefull s-text7 p-l-22 p-r-22" type="password" placeholder="Confirm Password" name="confirmPassword" required>
                 </div>
-                I agree with the term of use<input class="sizefull s-text7 p-l-22 p-r-22" type="checkbox" required>
                 <button type="submit" class="flex-c-m size4 bg7 bo-rad-10 hov1 s-text14 trans-0-4">Create your Account</button>
             </form>
         </div>

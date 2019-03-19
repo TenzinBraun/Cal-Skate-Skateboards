@@ -5,6 +5,8 @@ require_once('../Controller/DBManager.php');
 $db = new DBManager();
 
 $arrayBasketArticle = $db->findArticleFromBasket();
+session_start();
+
 
 ?>
 
@@ -63,7 +65,7 @@ $arrayBasketArticle = $db->findArticleFromBasket();
 
 				<div class="topbar-child2">
 					<span class="topbar-email">
-						fashe@example.com
+						CalSkateSkateboard@gmail.com
 					</span>
 
 					<div class="topbar-language rs1-select2">
@@ -77,45 +79,27 @@ $arrayBasketArticle = $db->findArticleFromBasket();
 
 			<div class="wrap_header">
 				<!-- Logo -->
-				<a href="index.html" class="logo">
-					<img src="images/icons/logo.png" alt="IMG-LOGO">
-				</a>
+                <a href="index.php" class="logo">
+                    <img src="images/skate/skate/Official_Logo.png" alt="IMG-LOGO">
+                    CAL-SKATE-SKATEBOARD
+                </a>
 
 				<!-- Menu -->
 				<div class="wrap_menu">
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a href="index.html">Home</a>
-								<ul class="sub_menu">
-									<li><a href="index.html">Homepage V1</a></li>
-									<li><a href="home-02.html">Homepage V2</a></li>
-									<li><a href="home-03.html">Homepage V3</a></li>
-								</ul>
+								<a href="index.php">Home</a>
 							</li>
 
 							<li>
 								<a href="product.php">Shop</a>
 							</li>
-
 							<li class="sale-noti">
-								<a href="product.php">Sale</a>
+								<a href="cart.php">Cart</a>
 							</li>
-
 							<li>
-								<a href="cart.php">Features</a>
-							</li>
-
-							<li>
-								<a href="blog.html">Blog</a>
-							</li>
-
-							<li>
-								<a href="about.html">About</a>
-							</li>
-
-							<li>
-								<a href="contact.html">Contact</a>
+								<a href="contact.php">Contact</a>
 							</li>
 						</ul>
 					</nav>
@@ -124,7 +108,11 @@ $arrayBasketArticle = $db->findArticleFromBasket();
 				<!-- Header Icon -->
 				<div class="header-icons">
 					<a href="connection.php" class="header-wrapicon1 dis-block">
-						<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+                        <?php if (isset($_SESSION['Name'])) {
+                            echo $_SESSION['Name'];
+                        }
+                        ?>
+                        <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
 					</a>
 
 					<span class="linedivide1"></span>
@@ -213,7 +201,7 @@ $arrayBasketArticle = $db->findArticleFromBasket();
 		<!-- Header Mobile -->
 		<div class="wrap_header_mobile">
 			<!-- Logo moblie -->
-			<a href="index.html" class="logo-mobile">
+			<a href="index.php" class="logo-mobile">
 				<img src="images/icons/logo.png" alt="IMG-LOGO">
 			</a>
 
@@ -350,9 +338,9 @@ $arrayBasketArticle = $db->findArticleFromBasket();
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="index.html">Home</a>
+						<a href="index.php">Home</a>
 						<ul class="sub-menu">
-							<li><a href="index.html">Homepage V1</a></li>
+							<li><a href="index.php">Homepage V1</a></li>
 							<li><a href="home-02.html">Homepage V2</a></li>
 							<li><a href="home-03.html">Homepage V3</a></li>
 						</ul>
@@ -370,17 +358,8 @@ $arrayBasketArticle = $db->findArticleFromBasket();
 					<li class="item-menu-mobile">
 						<a href="cart.php">Features</a>
 					</li>
-
 					<li class="item-menu-mobile">
-						<a href="blog.html">Blog</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="about.html">About</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="contact.html">Contact</a>
+						<a href="contact.php">Contact</a>
 					</li>
 				</ul>
 			</nav>
@@ -613,12 +592,6 @@ $arrayBasketArticle = $db->findArticleFromBasket();
 
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							About Us
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
 							Contact Us
 						</a>
 					</li>
@@ -707,7 +680,7 @@ $arrayBasketArticle = $db->findArticleFromBasket();
 			</a>
 
 			<div class="t-center s-text8 p-t-20">
-				Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+				Copyright © 2019 All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 			</div>
 		</div>
 	</footer>

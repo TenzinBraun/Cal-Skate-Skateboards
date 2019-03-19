@@ -1,5 +1,7 @@
 <?php
 require_once('../Controller/Article.php');
+session_start();
+
 
 $article = new Article();
 if(isset($_POST['name']) &&
@@ -71,7 +73,7 @@ if(isset($_POST['name']) &&
 
             <div class="topbar-child2">
 					<span class="topbar-email">
-						fashe@example.com
+						CalSkateSkateboard@gmail.com
 					</span>
 
                 <div class="topbar-language rs1-select2">
@@ -87,7 +89,7 @@ if(isset($_POST['name']) &&
 
         <div class="wrap_header">
             <!-- Logo -->
-            <a href="index.html" class="logo">
+            <a href="index.php" class="logo">
                 <img src="images/icons/logo.png" alt="IMG-LOGO">
             </a>
 
@@ -96,12 +98,7 @@ if(isset($_POST['name']) &&
                 <nav class="menu">
                     <ul class="main_menu">
                         <li>
-                            <a href="index.html">Home</a>
-                            <ul class="sub_menu">
-                                <li><a href="index.html">Homepage V1</a></li>
-                                <li><a href="home-02.html">Homepage V2</a></li>
-                                <li><a href="home-03.html">Homepage V3</a></li>
-                            </ul>
+                            <a href="index.php">Home</a>
                         </li>
 
                         <li>
@@ -115,17 +112,8 @@ if(isset($_POST['name']) &&
                         <li>
                             <a href="cart.php">Features</a>
                         </li>
-
                         <li>
-                            <a href="blog.html">Blog</a>
-                        </li>
-
-                        <li>
-                            <a href="about.html">About</a>
-                        </li>
-
-                        <li>
-                            <a href="contact.html">Contact</a>
+                            <a href="contact.php">Contact</a>
                         </li>
                     </ul>
                 </nav>
@@ -242,13 +230,6 @@ if(isset($_POST['name']) &&
                         Search
                     </a>
                 </li>
-
-                <li class="p-b-9">
-                    <a href="#" class="s-text7">
-                        About Us
-                    </a>
-                </li>
-
                 <li class="p-b-9">
                     <a href="#" class="s-text7">
                         Contact Us

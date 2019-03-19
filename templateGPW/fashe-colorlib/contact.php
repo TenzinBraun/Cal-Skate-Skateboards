@@ -1,3 +1,6 @@
+<?php session_start(); ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +55,7 @@
 
 				<div class="topbar-child2">
 					<span class="topbar-email">
-						fashe@example.com
+						CalSkateSkateboard@gmail.com
 					</span>
 
 					<div class="topbar-language rs1-select2">
@@ -66,8 +69,9 @@
 
 			<div class="wrap_header">
 				<!-- Logo -->
-				<a href="index.html" class="logo">
-					<img src="images/icons/logo.png" alt="IMG-LOGO">
+				<a href="index.php" class="logo">
+					<img src="images/skate/skate/Official_Logo.png" alt="IMG-LOGO">
+					CAL-SKATE-SKATEBOARD
 				</a>
 
 				<!-- Menu -->
@@ -75,36 +79,18 @@
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a href="index.html">Home</a>
-								<ul class="sub_menu">
-									<li><a href="index.html">Homepage V1</a></li>
-									<li><a href="home-02.html">Homepage V2</a></li>
-									<li><a href="home-03.html">Homepage V3</a></li>
-								</ul>
+								<a href="index.php">Home</a>
 							</li>
 
 							<li>
 								<a href="product.php">Shop</a>
 							</li>
 
-							<li class="sale-noti">
-								<a href="product.php">Sale</a>
-							</li>
-
 							<li>
-								<a href="cart.php">Features</a>
+								<a href="cart.php">Cart</a>
 							</li>
-
-							<li>
-								<a href="blog.html">Blog</a>
-							</li>
-
-							<li>
-								<a href="about.html">About</a>
-							</li>
-
-							<li>
-								<a href="contact.html">Contact</a>
+							<li  class="sale-noti">
+								<a href="contact.php">Contact</a>
 							</li>
 						</ul>
 					</nav>
@@ -113,7 +99,11 @@
 				<!-- Header Icon -->
 				<div class="header-icons">
 					<a href="connection.php" class="header-wrapicon1 dis-block">
-						<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+                        <?php if (isset($_SESSION['Name'])) {
+                            echo $_SESSION['Name'];
+                        }
+                        ?>
+                        <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
 					</a>
 
 					<span class="linedivide1"></span>
@@ -202,7 +192,7 @@
 		<!-- Header Mobile -->
 		<div class="wrap_header_mobile">
 			<!-- Logo moblie -->
-			<a href="index.html" class="logo-mobile">
+			<a href="index.php" class="logo-mobile">
 				<img src="images/icons/logo.png" alt="IMG-LOGO">
 			</a>
 
@@ -339,12 +329,7 @@
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="index.html">Home</a>
-						<ul class="sub-menu">
-							<li><a href="index.html">Homepage V1</a></li>
-							<li><a href="home-02.html">Homepage V2</a></li>
-							<li><a href="home-03.html">Homepage V3</a></li>
-						</ul>
+						<a href="index.php">Home</a>
 						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
 					</li>
 
@@ -359,17 +344,8 @@
 					<li class="item-menu-mobile">
 						<a href="cart.php">Features</a>
 					</li>
-
 					<li class="item-menu-mobile">
-						<a href="blog.html">Blog</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="about.html">About</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="contact.html">Contact</a>
+						<a href="contact.php">Contact</a>
 					</li>
 				</ul>
 			</nav>

@@ -1,35 +1,41 @@
 <?php
 
+session_start();
 $localhost = "localhost";
 $dbName = "cal_skate_skateboards";
 $username = "root";
 $password = "";
-$bdd = new PDO("mysql:host=$localhost;dbname=$dbName;charset=utf8",$username,$password);
+$bdd = new PDO("mysql:host=$localhost;dbname=$dbName;charset=utf8", $username, $password);
 
-if(isset($_POST['mail']) && isset($_POST['password'])){
+$_SESSION['Name'] = "";
+
+if (isset($_POST['mail']) && isset($_POST['password'])) {
     $email = htmlspecialchars($_POST['mail']);
     $pass = htmlspecialchars($_POST['password']);
-    $selectEmailFromDataBase = "SELECT `account_email` FROM account WHERE account_email LIKE '".$email."'";
-    $selectPasswordFromDataBase = "SELECT `account_password` FROM account WHERE account_email LIKE '".$email."'";
+    $selectEmailFromDataBase = "SELECT `account_email` FROM account WHERE account_email LIKE '" . $email . "'";
+    $selectPasswordFromDataBase = "SELECT `account_password` FROM account WHERE account_email LIKE '" . $email . "'";
+    $selectNameInDB = "SELECT `account_name` FROM account WHERE account_email LIKE'" . $email . "'";
+    $selectFNameInDB = "SELECT `account_first_name` FROM account WHERE account_email LIKE'" . $email . "'";
 
-    try{
+    try {
         $queryEmail = $bdd->query($selectEmailFromDataBase)->fetchColumn() or die();
         try {
             $queryPassword = $bdd->query($selectPasswordFromDataBase)->fetchColumn() or die();
+            $queryName = $bdd->query($selectNameInDB)->fetchColumn();
+            $queryFName = $bdd->query($selectFNameInDB)->fetchColumn();
             if ($queryPassword === $pass) {
-                echo "Connected !!!!";
+
+                $_SESSION['Name'] = $queryFName . " " . $queryName;
             } else {
                 echo "Error ! ";
             }
-        }catch(Exception $exception){
+        } catch (Exception $exception) {
             echo "Le mot de passe n'existe pas dans la base de données";
         }
-    }catch(Exception $exception){
+    } catch (Exception $exception) {
         echo "L'adresse mail n'existe pas dans la base de données";
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +88,7 @@ if(isset($_POST['mail']) && isset($_POST['password'])){
 
     <div class="topbar-child2">
 					<span class="topbar-email">
-						fashe@example.com
+						CalSkateSkateboard@gmail.com
 					</span>
 
         <div class="topbar-language rs1-select2">
@@ -95,45 +101,28 @@ if(isset($_POST['mail']) && isset($_POST['password'])){
 </div>
 <div class="wrap_header">
     <!-- Logo -->
-    <a href="index.html" class="logo">
-        <img src="images/icons/logo.png" alt="IMG-LOGO">
+    <a href="index.php" class="logo">
+        <img src="images/skate/skate/Official_Logo.png" alt="IMG-LOGO">
+        CAL-SKATE-SKATEBOARD
     </a>
 
     <!-- Menu -->
     <div class="wrap_menu">
         <nav class="menu">
             <ul class="main_menu">
-                <li>
-                    <a href="index.html">Home</a>
-                    <ul class="sub_menu">
-                        <li><a href="index.html">Homepage V1</a></li>
-                        <li><a href="home-02.html">Homepage V2</a></li>
-                        <li><a href="home-03.html">Homepage V3</a></li>
-                    </ul>
+                <li class="sale-noti">
+                    <a href="index.php">Home</a>
                 </li>
 
                 <li>
                     <a href="product.php">Shop</a>
                 </li>
 
-                <li class="sale-noti">
-                    <a href="product.php">Sale</a>
-                </li>
-
                 <li>
-                    <a href="cart.html">Features</a>
+                    <a href="cart.php">Features</a>
                 </li>
-
                 <li>
-                    <a href="blog.html">Blog</a>
-                </li>
-
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-
-                <li>
-                    <a href="contact.html">Contact</a>
+                    <a href="contact.php">Contact</a>
                 </li>
             </ul>
         </nav>
@@ -142,6 +131,10 @@ if(isset($_POST['mail']) && isset($_POST['password'])){
     <!-- Header Icon -->
     <div class="header-icons">
         <a href="connection.php" class="header-wrapicon1 dis-block">
+            <?php if (isset($_SESSION['Name'])) {
+                echo $_SESSION['Name'];
+            }
+            ?>
             <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
         </a>
 
@@ -180,9 +173,7 @@ if(isset($_POST['mail']) && isset($_POST['password'])){
                                 Converse All Star Hi Black Canvas
                             </a>
 
-                            <span class="header-cart-item-info">
-											1 x $39.00
-										</span>
+                            <span class="header-cart-item-info">1 x $39.00</span>
                         </div>
                     </li>
 
@@ -227,7 +218,7 @@ if(isset($_POST['mail']) && isset($_POST['password'])){
     </div>
 </div>
 <!-------Contents------>
-<form class ="leave-comment" action="" method="post">
+<form class="leave-comment" action="" method="post">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-5 p-b-30"></div>
@@ -237,11 +228,13 @@ if(isset($_POST['mail']) && isset($_POST['password'])){
                 </h4>
                 Email Address
                 <div class="bo4 of-hidden size14 m-b-20">
-                    <input class="sizefull s-text7 p-l-22 p-r-22" type="email" name="mail" placeholder="Exemple@mail.com" required type="text">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="email" name="mail"
+                           placeholder="Exemple@mail.com" required type="text">
                 </div>
                 Password
                 <div class="bo4 of-hidden size14 m-b-20">
-                    <input class="sizefull s-text7 p-l-22 p-r-22" type="password" name="password" placeholder="Password" required type="text">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="password" name="password" placeholder="Password"
+                           required type="text">
                 </div>
                 <button type="submit" class="flex-c-m size4 bg7 bo-rad-10 hov1 s-text14 trans-0-4">Submit</button>
 
@@ -260,7 +253,8 @@ if(isset($_POST['mail']) && isset($_POST['password'])){
 
             <div>
                 <p class="s-text7 w-size27">
-                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on
+                    (+1) 96 716 6879
                 </p>
 
                 <div class="flex-m p-t-30">
@@ -413,7 +407,9 @@ if(isset($_POST['mail']) && isset($_POST['password'])){
         </a>
 
         <div class="t-center s-text8 p-t-20">
-            Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o"
+                                                                                  aria-hidden="true"></i> by <a
+                    href="https://colorlib.com" target="_blank">Colorlib</a>
         </div>
     </div>
 </footer>

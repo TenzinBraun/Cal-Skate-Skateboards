@@ -1,3 +1,6 @@
+<?php session_start(); ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +73,7 @@
 
 			<div class="wrap_header">
 				<!-- Logo -->
-				<a href="index.html" class="logo">
+				<a href="index.php" class="logo">
 					<img src="images/skate/skate/Official_Logo.png" alt="IMG-LOGO">
 					CAL-SKATE-SKATEBOARD
 				</a>
@@ -79,37 +82,18 @@
 				<div class="wrap_menu">
 					<nav class="menu">
 						<ul class="main_menu">
-							<li>
-								<a href="index.html">Home</a>
-								<ul class="sub_menu">
-									<li><a href="index.html">Homepage V1</a></li>
-									<li><a href="home-02.html">Homepage V2</a></li>
-									<li><a href="home-03.html">Homepage V3</a></li>
-								</ul>
+							<li class="sale-noti">
+								<a href="index.php">Home</a>
 							</li>
 
 							<li>
 								<a href="product.php">Shop</a>
 							</li>
-
-							<li class="sale-noti">
-								<a href="product.php">Sale</a>
-							</li>
-
 							<li>
-								<a href="cart.php">Features</a>
+								<a href="cart.php">Cart</a>
 							</li>
-
 							<li>
-								<a href="blog.html">Blog</a>
-							</li>
-
-							<li>
-								<a href="about.html">About</a>
-							</li>
-
-							<li>
-								<a href="contact.html">Contact</a>
+								<a href="contact.php">Contact</a>
 							</li>
 						</ul>
 					</nav>
@@ -118,6 +102,10 @@
 				<!-- Header Icon -->
 				<div class="header-icons">
 					<a href="connection.php" class="header-wrapicon1 dis-block">
+						<?php if (isset($_SESSION['Name'])) {
+                        echo $_SESSION['Name'];
+                    }
+                    ?>
 						<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
 					</a>
 
@@ -207,7 +195,7 @@
 		<!-- Header Mobile -->
 		<div class="wrap_header_mobile">
 			<!-- Logo moblie -->
-			<a href="index.html" class="logo-mobile">
+			<a href="index.php" class="logo-mobile">
 				<img src="images/icons/logo.png" alt="IMG-LOGO">
 			</a>
 
@@ -344,12 +332,7 @@
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="index.html">Home</a>
-						<ul class="sub-menu">
-							<li><a href="index.html">Homepage V1</a></li>
-							<li><a href="home-02.html">Homepage V2</a></li>
-							<li><a href="home-03.html">Homepage V3</a></li>
-						</ul>
+						<a href="index.php">Home</a>
 						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
 					</li>
 					<li class="item-menu-mobile">
@@ -365,25 +348,12 @@
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="blog.html">Blog</a>					</li>
-
-					<li class="item-menu-mobile">
 						<a href="product.php">Materiel</a>
-						<ul class="sub-menu">
-							<li><a href="index.html">Homepage V1</a></li>
-							<li><a href="home-02.html">Homepage V2</a></li>
-							<li><a href="home-03.html">Homepage V3</a></li>
-						</ul>
 						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="cart.html">Urban Culture</a>
-						<ul class="sub-menu">
-							<li><a href="index.html">Homepage V1</a></li>
-							<li><a href="home-02.html">Homepage V2</a></li>
-							<li><a href="home-03.html">Homepage V3</a></li>
-						</ul>
+						<a href="cart.php">Urban Culture</a>
 						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
 					</li>
 				</ul>
@@ -398,7 +368,7 @@
 				<div class="item-slick1 item1-slick1" style="background-image: url(images/skate/skate/skateboarding_top.png);">
 					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
-							Skate Collection 2018
+							Skate Collection 2019
 						</span>
 
 						<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
@@ -435,7 +405,7 @@
 				<div class="item-slick1 item3-slick1" style="background-image: url(Pictures/streetWear.png);">
 					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
-							Men Collection 2018
+							Men Collection 2019
 						</span>
 
 						<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
@@ -479,7 +449,7 @@
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
 							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Casque
+								Helmets
 							</a>
 						</div>
 					</div>
@@ -493,7 +463,7 @@
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
 							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Sweat
+								Hoodies
 							</a>
 						</div>
 					</div>
@@ -534,7 +504,7 @@
 							</h4>
 
 							<p class="t-center w-size4">
-								Be the frist to know about the latest fashion news and get exclu-sive offers
+								Be the first to know about the latest fashion news and get exclu-sive offers
 							</p>
 
 							<div class="w-size2 p-t-25">
@@ -857,7 +827,7 @@
 								Lookbook
 							</h3>
 
-							<a href="#" class="s-text4 hov2 p-t-20 " background_color=#010101>
+							<a href="#" class="s-text4 hov2 p-t-20 " style="{background-color :#010101}">
 								View Collection
 							</a>
 						</div>
@@ -1027,7 +997,7 @@
 				<a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
 						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">50 234</span>
+						<span class="p-t-2">Infinity</span>
 					</span>
 
 					<div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
@@ -1318,7 +1288,7 @@
 			</a>
 
 			<div class="t-center s-text8 p-t-20">
-				Copyright © 2018 All rights reserved
+				Copyright © 2019 All rights reserved
 			</div>
 		</div>
 	</footer>
